@@ -1,0 +1,4 @@
+ls -la ~/ai_monitor/
+for f in ~/ai_monitor/*.sh; do
+  bash -n "$f" && echo "OK: $(basename $f)"
+done
