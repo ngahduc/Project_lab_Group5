@@ -22,6 +22,7 @@ rm -f "$ISSUES_FILE"
 [ -t 1 ] && clear
 
 echo -e "${BLUE}"
+echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 echo "================================================"
 echo "  Topic 14: AI-Powered Linux Monitoring"
 echo "  System Performance | Security | Updates"

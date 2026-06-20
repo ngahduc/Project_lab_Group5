@@ -1,0 +1,24 @@
+[Unit]
+Description=AI-Powered Linux Monitoring & Self-Healing (Topic 14 + 17)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=__USERNAME__
+WorkingDirectory=/home/__USERNAME__/ai_monitor
+
+# Vong lap: chay monitor.sh moi CHECK_INTERVAL giay, mai mai.
+# monitor.sh tu goi auto_fix.sh ngay trong cung tien trinh
+# khi phat hien loi (khong mo terminal moi vi day la SSH/text-only).
+ExecStart=/bin/bash -c 'while true; do /bin/bash /home/__USERNAME__/ai_monitor/monitor.sh; sleep __INTERVAL__; done'
+
+Restart=always
+RestartSec=5
+
+# Output di vao journal (xem bang: journalctl -u ai-monitor -f)
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
