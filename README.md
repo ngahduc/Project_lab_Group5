@@ -12,7 +12,6 @@
 ![License](https://img.shields.io/badge/License-Educational-lightgrey)
 
 </div>
----
 
 ## 📂 Cấu trúc thư mục
 
@@ -53,7 +52,7 @@ flowchart TD
     M --> N[backup.sh chạy định kỳ]
     N --> O[(backups/*.tar.gz)]
 ```
-
+---
 ## 🧩 Các thành phần chính
 
 <details>
