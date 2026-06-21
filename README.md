@@ -157,7 +157,7 @@ bash file_check/check_api.txt   # hoặc copy nội dung lệnh curl để chạ
 # 4. Cài đặt chạy nền tự khởi động cùng máy
 bash install_service.sh
 ```
-
+---
 ## 📋 Quản lý service & log
 
 ```bash
