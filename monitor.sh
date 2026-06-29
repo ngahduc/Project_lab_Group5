@@ -128,7 +128,7 @@ fi
 echo ""
 echo -e "  ${BLUE}[ Update Issues ]${NC}"
 echo -e "  ${YELLOW}Dang kiem tra cap nhat...${NC}"
-UPDATE_COUNT=$(dnf check-update 2>/dev/null | grep -c "^[a-zA-Z]" 2>/dev/null)
+UPDATE_COUNT=$(dnf check-update --refresh 2>/dev/null | grep -v "kB/s" | grep -cP "^\S+\s+\S+\s+\S+")
 UPDATE_COUNT=${UPDATE_COUNT//[^0-9]/}
 UPDATE_COUNT=${UPDATE_COUNT:-0}
 
