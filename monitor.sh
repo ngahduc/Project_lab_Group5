@@ -99,8 +99,10 @@ fi
 
 echo ""
 echo -e "  ${BLUE}[ Security Issues ]${NC}"
+FAILED_LOGIN=$(lastb 2>/dev/null | grep -c "." 2>/dev/null)
+FAILED_LOGIN=${FAILED_LOGIN//[^0-9]/}
+FAILED_LOGIN=${FAILED_LOGIN:-0}
 
-FAILED_LOGIN=$(lastb 2>/dev/null | grep -c "." || echo 0)
 if [ "$FAILED_LOGIN" -gt 10 ]; then
     echo -e "  Failed Login : ${RED}${FAILED_LOGIN} lan  CANH BAO${NC}"
     log "ALERT: Failed login: ${FAILED_LOGIN}"
@@ -126,7 +128,10 @@ fi
 echo ""
 echo -e "  ${BLUE}[ Update Issues ]${NC}"
 echo -e "  ${YELLOW}Dang kiem tra cap nhat...${NC}"
-UPDATE_COUNT=$(dnf check-update --quiet 2>/dev/null | grep -c "^[a-zA-Z]" || echo 0)
+UPDATE_COUNT=$(dnf check-update 2>/dev/null | grep -c "^[a-zA-Z]" 2>/dev/null)
+UPDATE_COUNT=${UPDATE_COUNT//[^0-9]/}
+UPDATE_COUNT=${UPDATE_COUNT:-0}
+
 if [ "$UPDATE_COUNT" -gt 0 ]; then
     echo -e "  Packages     : ${YELLOW}Co ${UPDATE_COUNT} goi can cap nhat${NC}"
     log "INFO: $UPDATE_COUNT goi can update"
